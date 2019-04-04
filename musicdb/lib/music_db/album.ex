@@ -19,4 +19,10 @@ defmodule MusicDB.Album do
     many_to_many(:genres, Genre, join_through: "albums_genres")
   end
 
+  def changeset(album, params) do
+    album
+    |> Ecto.Changeset.cast(params, [:title])
+    |> Ecto.Changeset.validate_required([:title])
+  end
+
 end
